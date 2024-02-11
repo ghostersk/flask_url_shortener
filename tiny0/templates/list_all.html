@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="url-form">
+    <h1>&#60; List of shortened URL's &#62;</h1>
+    <table>
+        <tr>
+            <th class="clicks"><b>Original URL</b></th>
+            <th class="clicks"><b>Shortened URL</b></th>
+            <th class="clicks"><b>Clicks</b></th>
+            <th class="clicks"><b>Reported?</b></th>
+        </tr>
+        {% if queried and base_url %}    
+            {% for url, message in queried  %}
+            <tr>
+                <td class="feedback-input">{{ url.url }}</td>
+                <td class="feedback-input">{{ base_url }}{{ url.token }}</td>
+                <td class="feedback-input">{{ url.clicks }}</td>
+                <td class="feedback-input">
+                    {% if message %}
+                        <span class="report-message" title="{{ message }}">Reported!</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+</div>
+
+<style>
+    /* Add some CSS for the tooltip styling */
+	.report-message {
+        cursor: pointer;
+    }
+
+</style>
+
+{% endblock %}

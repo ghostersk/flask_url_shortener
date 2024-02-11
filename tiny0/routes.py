@@ -10,6 +10,7 @@ from tiny0.config import WEBSITE_DOMAIN
 def index():
 	# Create a instance of the form
 	form = URLForm()
+	base_url = url_for('index', _external=True).split('://')[1]
 
 	# If the form was valid
 	if form.validate_on_submit():
@@ -38,7 +39,7 @@ def index():
 	# Else if the form was invalid or not submitted
 	else:
 		# Return the index page with the form
-		return render_template("index.html", form=form)
+		return render_template("index.html", form=form, base_url=base_url)
 
 # Shortened url route
 @app.route("/<token>")
@@ -118,10 +119,26 @@ def report():
 		# Return the report page with the form
 		return render_template("report.html", form=form)
 
-# Donate route
-@app.route("/donate")
-def donate():
-	return render_template("donate.html")
+# url list_urls route
+@app.route("/list_urls", methods=['GET', 'POST'])
+def list_urls():
+	try:
+		#queried = URL.query.order_by(URL.id.desc()).all()
+		with app.app_context():
+			queried = (
+				db.session.query(URL, Reports.message)
+				.outerjoin(Reports, URL.token == Reports.token)
+				.order_by(URL.id.desc())
+				.all()
+			)
+		# Return the list_all page with the form
+		base_url = url_for('index', _external=True).split('://')[1]
+		return render_template("list_all.html", queried=queried,base_url=base_url)
+
+	# Else if the form was invalid or not submitted
+	except Exception as err:
+		# Return 500 error
+		return render_template("error.html", error_code=500, error_message=err), 500
 
 # Removed url route
 @app.route("/removed")
