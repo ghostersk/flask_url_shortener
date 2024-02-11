@@ -11,6 +11,8 @@ db = SQLAlchemy(app)
 
 # Initialize the database
 from tiny0.models import URL
-db.create_all()
+# DB needs to run in context, for Python 3.10 at least and newest packages
+with app.app_context():    
+    db.create_all()
 
 from tiny0 import routes
