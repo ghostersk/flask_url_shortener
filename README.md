@@ -20,7 +20,7 @@ Clone the repository:
 
 Move into the cloned folder and install the required libraries:
 
-	$ cd tiny0
+	$ cd flask_url_shortener
 	$ pip install -r requirements.txt
 
 After that run with:
@@ -34,8 +34,6 @@ Visit the below URL to view the flask app:
 **NOTE:** When running locally all redirects will also be local.
 
 # Deploying
-
-If you do not have a dedicated server, I highly recommend using [Linode](https://www.linode.com/), [Heroku](https://www.heroku.com/) or [PythonAnywhere](https://www.pythonanywhere.com/) to host your application.
 
 Before deploying, make sure to set the following environment variables:
 
