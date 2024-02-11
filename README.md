@@ -1,3 +1,6 @@
+# Original Project belongs to Xemeds - tiny0:
+https://github.com/xemeds/tiny0
+
 # How it works
 
 Each URL that is submitted goes through a simple check for validity and/or added http:// before it to redirect successful.
