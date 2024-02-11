@@ -2,6 +2,7 @@
 https://github.com/xemeds/tiny0
 
 --> Updated it to work with Python 3.10
+
 --> Added list all URL's and if they been reported.
 
 # How it works
