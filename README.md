@@ -1,6 +1,8 @@
 # Original Project belongs to Xemeds - tiny0:
 https://github.com/xemeds/tiny0
 
+--> Updated it to work with Python 3.10
+
 # How it works
 
 Each URL that is submitted goes through a simple check for validity and/or added http:// before it to redirect successful.
@@ -14,7 +16,7 @@ Whenever this URL is visited the user will get redirected to the tokens correspo
 
 Clone the repository:
 
-	$ git clone https://github.com/xemeds/tiny0.git
+	$ git clone https://github.com/ghostersk/flask_url_shortener.git
 
 Move into the cloned folder and install the required libraries:
 
